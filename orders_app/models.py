@@ -6,24 +6,24 @@ class Device(models.Model):
     """Оборудование"""
 
     class Meta:
-        db_table = 'devices'
-        verbose_name = 'Доступное оборудование'
-        verbose_name_plural = 'Доступные оборудования'
+        db_table = "devices"
+        verbose_name = "Доступное оборудование"
+        verbose_name_plural = "Доступное оборудование"
 
-    manufacturer = models.TextField(verbose_name='Производитель')
-    model = models.TextField(verbose_name='Модель')
+    manufacturer = models.TextField(verbose_name="Производитель")
+    model = models.TextField(verbose_name="Модель")
 
     def __str__(self):
-        return f'{self.manufacturer} {self.model}'
+        return f"{self.manufacturer} {self.model}"
 
 
 class Customer(models.Model):
     """Конечные пользователи оборудования"""
 
     class Meta:
-        db_table = 'customers'
-        verbose_name = 'Заказчик'
-        verbose_name_plural = 'Заказчики'
+        db_table = "customers"
+        verbose_name = "Описание контрагента"
+        verbose_name_plural = "Описание контрагентов"
 
     customer_name = models.TextField(verbose_name="Наименование организации")
     customer_address = models.TextField(verbose_name="Адрес")
@@ -34,12 +34,12 @@ class Customer(models.Model):
 
 
 class DeviceInField(models.Model):
-    """Оборудование на объекте"""
+    """Оборудование в полях"""
 
     class Meta:
-        db_table = 'devices_in_fields'
-        verbose_name = 'Оборудование на объекте'
-        verbose_name_plural = 'Оборудование на объектах'
+        db_table = "devices_in_fields"
+        verbose_name = "Оборудование в полях"
+        verbose_name_plural = "Оборудование в полях"
 
     serial_number = models.TextField(verbose_name="Серийный номер")
     customer = models.ForeignKey(Customer, on_delete=models.RESTRICT, verbose_name="Пользователь")
@@ -51,12 +51,12 @@ class DeviceInField(models.Model):
 
 
 class Order(models.Model):
-    """Описание заявки"""
+    """Класс для описания заявки"""
 
     class Meta:
-        db_table = 'orders'
-        verbose_name = 'Заявка'
-        verbose_name_plural = 'Заявки'
+        db_table = "orders"
+        verbose_name = "Заявка"
+        verbose_name_plural = "Заявки"
 
     statuses = (("open", "открыта"),
                 ("closed", "закрыта"),
